@@ -2,10 +2,10 @@
   <div class="container">
     <h1>Checkout</h1>
 
-    <table class="table table-hover">
+    <table class="table table-hover" v-if="cart.length">
       <caption class="text-right h3">
-        <b>Total:</b>
-        Total
+        <b>Total: </b>
+        <curr :amt="cartTotal"></curr>
       </caption>
       <thead>
         <tr>
@@ -17,24 +17,30 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr v-for="(item, idx) in cart" :key="item.product.id">
           <td class="text-center">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button class="btn btn-success">
+              <button
+                @click="this.$emit('addItem', item.product)"
+                class="btn btn-success"
+              >
                 +
               </button>
-              <button class="btn btn-outline-success">
+              <button
+                @click="this.$emit('deleteItem', idx)"
+                class="btn btn-outline-success"
+              >
                 -
               </button>
             </div>
           </td>
-          <th scope="row">item name</th>
-          <td class="text-center">item qty</td>
+          <th scope="row">{{ item.product.name }}</th>
+          <td class="text-center">{{ item.qty }}</td>
           <td class="text-right">
-            price
+            <curr :amt="item.product.price"></curr>
           </td>
           <td class="text-right">
-            subtotal
+            <curr :amt="item.qty * item.product.price"></curr>
           </td>
         </tr>
       </tbody>
@@ -42,11 +48,16 @@
     <router-link class="btn btn-sm btn-success" to="/"
       >Keep Shopping</router-link
     >
-  </div></template
->
-
+  </div>
+</template>
 <script>
-export default {}
+import Curr from '@/components/Curr.vue'
+
+export default {
+  components: { Curr },
+  props: ['cart', 'cartTotal'],
+  emits: ['addItem', 'deleteItem']
+}
 </script>
 
 <style></style>

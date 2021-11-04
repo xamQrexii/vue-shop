@@ -7,6 +7,8 @@
   />
   <div class="container">
     <router-view
+      :cartTotal="cartTotal"
+      :cartQty="cartQty"
       :products="products"
       :cart="cart"
       @addItem="addItem"
