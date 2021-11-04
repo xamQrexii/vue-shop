@@ -15,6 +15,6 @@
 </template>
 <script>
 export default {
-  props: ["products", "modelValue"],
-};
+  props: ['products', 'modelValue']
+}
 </script>
