@@ -17,7 +17,7 @@
             </b>
             <button
               @click.stop="this.$parent.$emit('deleteItem', index)"
-              class="btn btn-sm btn-danger ml-2"
+              class="btn btn-sm btn-danger mx-2"
             >
               -
             </button>
