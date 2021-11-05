@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-light sticky-top mr-3">
+  <nav class="navbar navbar-light sticky-top mr-3 p-5">
     <div
       v-if="cart.length"
       class=" w-100 navbar-text ml-auto d-flex justify-content-end position-relative"
