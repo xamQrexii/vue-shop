@@ -8,7 +8,9 @@
         class="mr-auto d-flex align-items-end flex-column bd-highlight mb-3 position-absolute"
       >
         <div class="mb-2">
-          <span class="font-weight-bold bg-white"
+          <span
+            class="font-weight-bold bg-white d-inline-block"
+            style="margin-right: 5px;"
             ><curr :amt="cartTotal"></curr
           ></span>
           <button
