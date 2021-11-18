@@ -9,7 +9,6 @@
     <router-view
       :cartTotal="cartTotal"
       :cartQty="cartQty"
-      :products="products"
       :cart="cart"
       @addItem="addItem"
       @delete-item="deleteItem"
@@ -19,22 +18,16 @@
 
 <script>
 import Navbar from '@/components/Navbar'
+import { mapActions, mapState } from 'vuex'
+
 export default {
   data: function() {
     return {
-      cart: [],
-      products: []
+      cart: []
     }
   },
   components: {
     Navbar
-  },
-  created() {
-    fetch('https://hplussport.com/api/products/order/price')
-      .then(response => response.json())
-      .then(data => {
-        this.products = data
-      })
   },
   methods: {
     addItem(product) {

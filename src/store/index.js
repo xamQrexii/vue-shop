@@ -1,15 +1,11 @@
 import { createStore } from 'vuex'
 
+// import store modules
+import { products } from './modules/products'
+
 // Create a new store instance.
 export default createStore({
-  state () {
-    return {
-      count: 0
-    }
-  },
-  mutations: {
-    increment (state) {
-      state.count++
-    }
+  modules: {
+    products
   }
 })
