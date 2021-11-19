@@ -24,7 +24,11 @@
             {{ cartQty }}
           </button>
         </div>
-        <cart-dropdown :cart="cart" :displayCart="displayCart" />
+        <cart-dropdown
+          :cart="cart"
+          :display-cart="displayCart"
+          @delete-item="deleteItem"
+        />
       </div>
     </div>
   </nav>
@@ -33,21 +37,22 @@
 <script>
 import Curr from '@/components/Curr'
 import CartDropdown from '@/components/CartDropdown'
+import { mapState, mapMutations, mapGetters } from 'vuex'
+
 export default {
-  data: function() {
-    return {
-      displayCart: false
-    }
-  },
-  props: ['cart', 'cartTotal', 'cartQty'],
   components: {
     Curr,
     CartDropdown
   },
   methods: {
-    toggleCartMenu() {
-      this.displayCart = !this.displayCart
-    }
+    ...mapMutations(['toggleCartMenu', 'deleteItem'])
+  },
+  computed: {
+    ...mapState({
+      cart: state => state.cart.cart,
+      displayCart: state => state.cart.displayCart
+    }),
+    ...mapGetters(['cartTotal', 'cartQty'])
   }
 }
 </script>

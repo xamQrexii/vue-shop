@@ -1,9 +1,6 @@
 <template>
   <div class="col-2 m-auto">
-    <button
-      @click="this.$parent.$parent.$parent.$parent.$emit('addItem', item)"
-      class="btn btn-success"
-    >
+    <button @click="this.$emit('addItem', item)" class="btn btn-success">
       +
     </button>
   </div>

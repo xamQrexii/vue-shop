@@ -1,6 +1,7 @@
 <template>
   <section class="container">
     <range-selector :products="filteredProducts" v-model="max" />
+    <product-list></product-list>
   </section>
 </template>
 
@@ -14,8 +15,8 @@ export default {
   name: 'Home',
 
   components: {
-    RangeSelector
-    // ProductList
+    RangeSelector,
+    ProductList
   },
   created() {
     this.getProducts()

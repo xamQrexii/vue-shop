@@ -1,20 +1,28 @@
 <template>
   <transition-group name="products" appear>
     <div
-      v-for="item in products"
+      v-for="item in filteredProducts"
       :key="item.id"
       id="item-list"
       class="row align-items-center"
     >
-      <product :item="item" />
+      <product :item="item" @addItem="addItem" />
     </div>
   </transition-group>
 </template>
 
 <script>
 import Product from '@/components/Product'
+import { mapGetters, mapMutations } from 'vuex'
+
 export default {
-  props: ['products'],
+  name: 'ProductList',
+  methods: {
+    ...mapMutations(['addItem'])
+  },
+  computed: {
+    ...mapGetters(['filteredProducts'])
+  },
   components: {
     Product
   }

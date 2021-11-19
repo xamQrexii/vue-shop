@@ -20,16 +20,10 @@
         <tr v-for="(item, idx) in cart" :key="item.product.id">
           <td class="text-center">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button
-                @click="this.$emit('addItem', item.product)"
-                class="btn btn-success"
-              >
+              <button @click="addItem(item.product)" class="btn btn-success">
                 +
               </button>
-              <button
-                @click="this.$emit('deleteItem', idx)"
-                class="btn btn-outline-success"
-              >
+              <button @click="deleteItem(idx)" class="btn btn-outline-success">
                 -
               </button>
             </div>
@@ -52,11 +46,17 @@
 </template>
 <script>
 import Curr from '@/components/Curr.vue'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 
 export default {
   components: { Curr },
-  props: ['cart', 'cartTotal'],
-  emits: ['addItem', 'deleteItem']
+  methods: {
+    ...mapMutations(['addItem', 'deleteItem'])
+  },
+  computed: {
+    ...mapState({ cart: state => state.cart.cart }),
+    ...mapGetters(['cartTotal', 'cartQty'])
+  }
 }
 </script>
 

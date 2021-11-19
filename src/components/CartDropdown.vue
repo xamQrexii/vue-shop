@@ -16,7 +16,7 @@
               <curr :amt="item.qty * Number(item.product.price)"></curr>
             </b>
             <button
-              @click.stop="this.$parent.$emit('deleteItem', index)"
+              @click.stop="this.$emit('deleteItem', index)"
               class="btn btn-sm btn-danger mx-2"
             >
               -
